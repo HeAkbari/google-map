@@ -1,0 +1,58 @@
+<google-map #map
+  id="map"
+  height="600px"
+  width="100%"
+  [center]="center"
+  [zoom]="zoom"
+  [options]="{streetViewControl:false}"
+  (mapClick)="mapClick($event)"
+  (mapMousemove)="move($event)"
+  (zoomChanged)="onZoomChanged(map)"
+>
+  <map-directions-renderer
+    *ngIf="directionsResults$ | async as directionsResults"
+    [directions]="directionsResults"
+    [options]="{ draggable: true, markerOptions: { visible: false } }"
+  ></map-directions-renderer>
+
+  <map-traffic-layer [autoRefresh]="false"></map-traffic-layer>
+
+  <map-marker
+    *ngIf="currentLocation"
+    [position]="currentLocation"
+    [options]="markerOptions"
+    icon="../assets/img/current-location.png"
+  ></map-marker>
+
+  <map-marker
+    *ngIf="currentLocation"
+    [position]="currentLocation"
+    [options]="markerOptions"
+    icon="../assets/img/current-location.png"
+  ></map-marker>
+
+  <map-marker
+    #marker="mapMarker"
+    *ngFor="let item of suggestedMarks"
+    [position]="item.latLng"
+    [options]="markerOptions"
+    [title]="item.title!"
+    [clickable]="true"
+    (mapClick)="openInfoWindow(marker)"
+  ></map-marker>
+  <!-- <map-polyline *ngIf="vertices.length" [path]="vertices"></map-polyline> -->
+
+  <map-info-window>Info Window content</map-info-window>
+  <!-- <map-polygon [paths]="vertices"></map-polygon> -->
+  <!-- <map-circle *ngIf="currentLocation" [center]="currentLocation"
+  [radius]="radius"></map-circle> -->
+  <!-- <map-rectangle [bounds]="bounds"></map-rectangle> -->
+</google-map>
+
+<div>
+  <small>Latitude: {{ display?.lat }} </small>
+  <small>Longitude: {{ display?.lng }}</small>
+</div>
+<button *ngIf="destination" (click)="getDirection(null)">Direction</button>
+<button (click)="getLocation()">Current location</button>
+<button (click)="getSuggestion()">Suggestion based on your location</button>
