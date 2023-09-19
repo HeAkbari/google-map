@@ -1,15 +1,37 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Suggestion</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3GG7Qq1XgRMAcjPejT9spgnR4RZ9xzbU"></script>
-  <!-- <script src="https://maps.googleapis.com/maps/api/js?sensor=false&callback=myMap"></script> -->
+  <meta charset="UTF-8">
+  <title>Neshan Map Example (OpenLayers)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3GG7Qq1XgRMAcjPejT9spgnR4RZ9xzbU"></script> -->
+
+
+
+  <!-- The line below is only needed for old environments like Internet Explorer and Android 4.x -->
+  <link rel="stylesheet" type="text/css" href="https://static.neshan.org/sdk/openlayers/5.3.0/ol.css">
+  <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>
+  <script type="text/javascript" src="https://static.neshan.org/sdk/openlayers/5.3.0/ol.js"></script>
+
+  <!-- <link rel="stylesheet" href="https://static.neshan.org/sdk/leaflet/v1.9.4/neshan-sdk/v1.0.8/index.css"/>
+  <script src="https://static.neshan.org/sdk/leaflet/v1.9.4/neshan-sdk/v1.0.8/index.js"></script> -->
+  <style>
+    body {
+        height: 100vh;
+        width: 100vw;
+        margin: 0;
+    }
+
+    #map {
+        height: 100%;
+        width: 100%;
+    }
+</style>
 </head>
 <body>
+  
+  
+
   <app-root></app-root>
 </body>
 </html>
